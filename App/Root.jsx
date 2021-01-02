@@ -1,68 +1,41 @@
-import React, {useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+
 import Orientation from 'react-native-orientation';
+import {Provider} from 'react-redux';
+import {useEffect} from 'react';
+import store from './store/store';
+import {createStackNavigator} from '@react-navigation/stack';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
+const Stack = createStackNavigator();
+const initStorage = async () => {
+  // TODO ↓
+  // if (await AsyncStorage.getItem('purchy_store.productReducer.shoppings')) {
+  //   dispatch(setShoppings(AsyncStorage.getItem('')))
+  // } else {
+  //   dispatch(setShoppings([]))
+  // }
+}
 const Root = () => {
+  console.log('store = ', store);
+
   useEffect(() => {
-    Orientation.lockToLandscape();
+    Orientation.lockToPortrait();
+  }, []);
+
+  useEffect(() => {
+
   }, []);
   return (
-    <SafeAreaView>
-      <StatusBar barStyle="dark-content" />
-      <Text>12345</Text>
-    </SafeAreaView>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="App" component={BottomTabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
-
-const s = StyleSheet.create({
-  scrollView: {
-
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
 export default Root;
-
