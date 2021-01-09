@@ -10,13 +10,13 @@ const BottomBar = (props) => {
         {
           props.state.routes &&
             props.state.routes.map((item) => {
-              const {options: {tabBarIcon, tabBarLabel}, navigation: {push}} = props.descriptors[item.key];
+              const {options: {tabBarIcon, tabBarLabel}, navigation} = props.descriptors[item.key];
 
               return (
                 <TouchableOpacity
                   key={tabBarLabel}
                   style={s.buttonWrapper}
-                  onPress={() => push(item.name)}
+                  onPress={() => navigation.push(item.name)}
                 >
                   <View style={s.button}>
                     {tabBarIcon({focused: true})}

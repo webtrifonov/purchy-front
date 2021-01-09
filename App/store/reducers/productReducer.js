@@ -1,4 +1,4 @@
-import { FETCH } from '../actions/actionTypes';
+import {FETCH, STORAGE} from '../actions/actionTypes';
 import {reducerGenerator} from '../../utils/store';
 
 const initialState = {
@@ -51,20 +51,26 @@ const initialState = {
 };
 
 const HANDLERS = {
-  [FETCH.SHOPPING_LIST.START]: (state) => {
+  [STORAGE.SET_SHOPPINGS]: (state, payload) => {
+    return {
+      ...state,
+      shoppings: payload
+    }
+  },
+  [FETCH.SHOPPINGS.START]: (state) => {
     return {
       ...state,
       loading: true
     }
   },
-  [FETCH.SHOPPING_LIST.SUCCESS]: (state, payload) => {
+  [FETCH.SHOPPINGS.SUCCESS]: (state, payload) => {
     return {
       ...state,
       loading: false,
       shoppings: payload.shoppings
     }
   },
-  [FETCH.SHOPPING_LIST.ERROR]: (state, payload) => {
+  [FETCH.SHOPPINGS.ERROR]: (state, payload) => {
     return {
       ...state,
       loading: false,

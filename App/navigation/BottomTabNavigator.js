@@ -19,7 +19,7 @@ const BottomTabNavigator = () => {
         component={ShoppingStackScreen}
         options={{
           tabBarIcon: ({focuced}) => <SvgCheckList />,
-          tabBarLabel: 'Shopping List'
+          tabBarLabel: 'Shopping List',
         }}
       />
       <BottomTab.Screen

@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {View} from 'react-native';
-import {fetchEntityStart} from '../../store/actions/entityActions';
+import {View, TouchableOpacity, Text} from 'react-native';
 import Header from '../../components/Header/Header';
 import CheckList from '../../components/CheckList/CheckList';
 import styles from '../../RootStyles';
-import LeftBar from '../../LeftBar/LeftBar';
-import RightBar from '../../RightBar/RightBar';
+import LeftBar from '../../components/LeftBar/LeftBar';
+import RightBar from '../../components/RightBar/RightBar';
 
-const ShoppingScreen = () => {
+const ShoppingScreen = (props) => {
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchEntityStart({id: 2}));
+    // dispatch(fetchShoppingsStart());
   },  [dispatch]);
   const {shoppings} = useSelector((state) => state.productReducer);
 

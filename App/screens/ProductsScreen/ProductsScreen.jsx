@@ -6,8 +6,7 @@ import {productsSelector} from '../../store/selectors/productSelector';
 import styles from '../../RootStyles';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
-import CheckItem from '../../components/CheckItem/CheckItem';
-import {createProduct, updateProduct} from '../../store/actions/entityActions';
+import {createProduct, updateProduct} from '../../store/actions/productActions';
 
 
 const ProductsScreen = (props) => {

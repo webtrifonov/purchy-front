@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import entityReducer from './entityReducer';
 import productReducer from './productReducer';
+import drawerReducer from './drawerReducer';
 
 export default combineReducers({
-  entityReducer,
   productReducer,
+  drawerReducer,
 });

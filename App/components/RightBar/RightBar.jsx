@@ -1,23 +1,27 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Constants from '../utils/constants/constants';
-import Colors from '../utils/constants/colors';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Constants from '../../utils/constants/constants';
+import Colors from '../../utils/constants/colors';
+import Icon from 'react-native-vector-icons/EvilIcons';
+import {DrawerActions} from '@react-navigation/native';
+import {setRightDrawer} from '../../store/actions/drawerActions';
+import {useDispatch} from 'react-redux';
 
-const LeftBar = () => {
+const RightBar = () => {
+  const dispatch = useDispatch();
   const onPress = () => {
-    console.log('menu')
+    dispatch(setRightDrawer({status: 'open'}));
   }
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={s.sideHeader}
-      onPress={onPress()}
     >
       <Icon
         style={s.checkBox}
-        name={'menu'}
+        name={'user'}
         color={Colors.success}
-        size={36}
+        size={42}
       />
     </TouchableOpacity>
   );
@@ -35,4 +39,4 @@ const s = StyleSheet.create({
     color: '#fafafa',
   },
 })
-export default LeftBar;
+export default RightBar;
